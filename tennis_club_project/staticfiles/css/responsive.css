@@ -267,7 +267,7 @@ margin: 75px auto;
 	width: 100%;
 }
 .footer-newsletters h3 {
-	float left;
+	float: left;
 }
 }
 @media only screen and (max-width: 990px) 
@@ -1024,6 +1024,8 @@ header {
 }
 .img-djoko {
     float: none;
+	max-width: 270px;
+	max-height: 180px;
 }
 .news-page img {
     width: 100%;

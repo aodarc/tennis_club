@@ -2923,6 +2923,8 @@ text-decoration: none;
 }
 .img-djoko {
 	float: left;
+	max-height: 180px;
+	max-width: 270px;
 }
 .rank-player p.rank-data{
 	font-weight:400;
@@ -3374,6 +3376,10 @@ text-decoration: none;
 	text-align:center;
     padding: 0 15px;
     margin-top: 80px;
+}
+.other-news>ul>li>img{
+	max-width: 270px;
+	max-height: 180px;
 }
 #single_news .bx-wrapper .bx-viewport {
 	background: #fff;

@@ -55,6 +55,9 @@ class News(models.Model):
     def __str__(self):
         return self.title
 
+    @models.permalink
+    def get_absolute_url(self):
+        return 'news_post', (), {'slug': self.slug}
 
 # class Comment(models.Model):
 #     email = models.EmailField(verbose_name='Email')

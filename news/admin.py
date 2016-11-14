@@ -3,7 +3,7 @@ from django import forms
 
 from ckeditor.widgets import CKEditorWidget
 
-from .models import News, Image
+from .models import News, Image, Tag
 
 
 # Register your models here.
@@ -23,4 +23,5 @@ class NewsAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Image)
+admin.site.register(Tag)
 admin.site.register(News, NewsAdmin)

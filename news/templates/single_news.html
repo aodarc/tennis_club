@@ -14,76 +14,32 @@
     <section id="single_news" class="container secondary-page">
       <div class="general general-results">
         <div class="top-score-title col-md-9">
-          <h3>Match of the Day presented<span class="point-little">.</span></h3>
+          <h3>{{ news_object.title }}<span class="point-little">.</span></h3>
 
-          <p class="desc_news">It normally takes a great of deal time and effort to defeat No. 26 Jhon Doe, largely due
-            to his counterpunching style of play and impressive foot speed.
-            No. 14 seed Jhon Doe
-            needed that and more on Tuesday in Louis Armstrong Stadium, going a marathon five sets to prevail in their
-            fourth-round match, 5-7, 7-6, 6-4, 3-6, 6-3.</p>
-          <p class="desc_news important_news"><i class="fa fa-quote-left"></i>Sed ut perspiciatis unde omnis iste natus
-            error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-            veritatis et quasi
-            architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
-            odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
-            voluptatem sequi nesciunt.<i class="fa fa-quote-right"></i></p>
-          <p class="desc_news">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-            voluptatum deleniti atque
-            corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in
-            culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. </p>
+          {{ news_object.content|safe }}
 
-          <p class="desc_news important_news data">by ATP Staff <i class="fa fa-calendar"></i>May 7, 2014 - London,
-            England</p>
+          <p class="desc_news important_news data">by {{ news_object.author }} <i
+              class="fa fa-calendar"></i>{{ news_object.created|date:"F j, Y" }}</p>
 
-          <div class="tab_news"><i class="fa fa-tag"></i><span>TAGS:</span><a href="index.html" class="tag">SPORT</a><a
-              href="news.html" class="tag">TENNIS</a><a href="players.html" class="tag">PLAYERS</a></div>
+          <div class="tab_news"><i class="fa fa-tag"></i><span>TAGS:</span>
+            {% for tag in news_object.tags.all %}
+              <a href="#" class="tag">{{ tag.name }}</a>
+            {% endfor %}
+          </div>
 
           <div class="other-news">
             <h3>Other <span>News</span><span class="point-little">.</span></h3>
             <ul id="product" class="bxslider">
-              <li>
-                <img src="http://placehold.it/270x180" alt=""/>
-                <p class="product-title">Europe Tour</p>
-                <p class="txt-other-news">It normally takes a great of deal time and effort to defeat No. 26 Gilles
-                  Simon, largely due to his counterpunching style of play and impressive foot speed.</p>
-                <div><a href="single_news.html" class="ready-news">Read</a></div>
-              </li>
-              <li>
-                <img src="http://placehold.it/270x180" alt=""/>
-                <p class="product-title">London Cup</p>
-                <p class="txt-other-news">It normally takes a great of deal time and effort to defeat No. 26 Gilles
-                  Simon, largely due to his counterpunching style of play and impressive foot speed.</p>
-                <div><a href="single_news.html" class="ready-news">Read</a></div>
-              </li>
-              <li>
-                <img src="http://placehold.it/270x180" alt=""/>
-                <p class="product-title">ATP World</p>
-                <p class="txt-other-news">It normally takes a great of deal time and effort to defeat No. 26 Gilles
-                  Simon, largely due to his counterpunching style of play and impressive foot speed.</p>
-                <div><a href="single_news.html" class="ready-news">Read</a></div>
-              </li>
-              <li>
-                <img src="http://placehold.it/270x180" alt=""/>
-                <p class="product-title">WPT World</p>
-                <p class="txt-other-news">It normally takes a great of deal time and effort to defeat No. 26 Gilles
-                  Simon, largely due to his counterpunching style of play and impressive foot speed.</p>
-                <div><a href="single_news.html" class="ready-news">Read</a></div>
-              </li>
-              <li>
-                <img src="http://placehold.it/270x180" alt=""/>
-                <p class="product-title">Russian</p>
-                <p class="txt-other-news">It normally takes a great of deal time and effort to defeat No. 26 Gilles
-                  Simon, largely due to his counterpunching style of play and impressive foot speed.</p>
-                <div><a href="single_news.html" class="ready-news">Read</a></div>
-              </li>
-              <li>
-                <img src="http://placehold.it/270x180" alt=""/>
-                <p class="product-title">Africa Tour</p>
-                <p class="txt-other-news">It normally takes a great of deal time and effort to defeat No. 26 Gilles
-                  Simon, largely due to his counterpunching style of play and impressive foot speed.</p>
-                <div><a href="single_news.html" class="ready-news">Read</a></div>
-              </li>
-
+              {% for other in other_news %}
+                {% if other.is_posted %}
+                  <li>
+                    <img src="{{ other.img.url }}" alt=""/>
+                    <p class="product-title">{{ other.title|slice:":20" }}</p>
+                    <p class="txt-other-news">{{ other.content|striptags|slice:":160" }}...</p>
+                    <div><a href="{{ other.get_absolute_url }}" class="ready-news">Читати</a></div>
+                  </li>
+                {% endif %}
+              {% endfor %}
             </ul>
           </div>
 
@@ -117,27 +73,13 @@
         <div class="col-md-3 right-column">
           <div class="top-score-title col-md-12 right-title">
             <h3>Latest News</h3>
+            {% for news in latest_news %}
             <div class="right-content">
-              <p class="news-title-right">A New Old Life</p>
-              <p class="txt-right">Simon, who’s seeded just a lowly 26th here, was in many ways the right man for this
-                grueling assignment</p>
-              <a href="single_news.html" class="ca-more"><i class="fa fa-angle-double-right"></i>more...</a>
+              <p class="news-title-right">{{ news.title|slice:":15" }}</p>
+              <p class="txt-right">{{ news.content|striptags|slice:":120" }}...</p>
+              <a href="{{ news.get_absolute_url }}" class="ca-more"><i class="fa fa-angle-double-right"></i>Більше...</a>
             </div>
-            <div class="right-content">
-              <p class="news-title-right">A New Old Life</p>
-              <p class="txt-right">Simon, who’s seeded just a lowly 26th here, was in many ways the right man for this
-                grueling assignment</p>
-              <a href="single_news.html" class="ca-more"><i class="fa fa-angle-double-right"></i>more...</a>
-            </div>
-            <div class="right-content">
-              <p class="news-title-right">A New Old Life</p>
-              <p class="txt-right">Simon, who’s seeded just a lowly 26th here, was in many ways the right man for this
-                grueling assignment</p>
-              <a href="single_news.html" class="ca-more"><i class="fa fa-angle-double-right"></i>more...</a>
-            </div>
-          </div>
-          <div class="top-score-title col-md-12">
-            <img src="http://placehold.it/1000x475" alt=""/>
+            {% endfor %}
           </div>
           <!-- <div class="top-score-title col-md-12 right-title">
                 <h3>Photos</h3>
@@ -270,6 +212,7 @@
                         </li>
                 </ul>
           </div> -->
+          </div>
         </div>
     </section>
     <section id="sponsor" class="container">

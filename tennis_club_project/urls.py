@@ -14,12 +14,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
+from tennis_club_project import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-    url(r'^$', TemplateView.as_view(template_name='index.html')),
+    url(r'^$', TemplateView.as_view(template_name='index.html'), name='main'),
+    url(r'^contacts$', TemplateView.as_view(template_name='contacts.html'), name='contacts'),
+    url(r'^players$', TemplateView.as_view(template_name='players.html'), name='players'),
+    url(r'^gallery$', TemplateView.as_view(template_name='gallery.html'), name='gallery'),
     url(r'^news/', include('news.urls'), name='news')
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
