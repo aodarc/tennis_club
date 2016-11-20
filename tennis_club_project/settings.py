@@ -36,7 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
-    'news'
+    # 'multiupload',
+    'news',
+    'gallery',
 ]
 
 MIDDLEWARE = [

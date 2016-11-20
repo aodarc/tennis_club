@@ -15,105 +15,21 @@
 
         <div class="top-score-title right-score col-md-9">
           <h3>Photo <span>Gallery</span><span class="point-little">.</span></h3>
-          <!-- Category Filter -->
-          <dl class="group">
-            <dd>
-              <ul class="filter group albumFilter">
-                <li data-filter="*" class="current"><a href="#">ALL</a></li>
-                <li data-filter=".cat1"><a href="#">ATP</a></li>
-                <li data-filter=".cat2"><a href="#">WTP</a></li>
-                <li data-filter=".cat3"><a href="#">BEAUTY</a></li>
-                <li data-filter=".cat4"><a href="#">MEETING</a></li>
-              </ul>
-            </dd>
-          </dl>
 
-          <!-- Portfolio Items -->
-          <ul class="portfolio group albumContainer">
-            <li class="item block cat2">
-              <a href="http://placehold.it/1600x1000" rel="prettyPhoto[portfolio]"><img
-                  src="http://placehold.it/1280x800"
-                  alt="Yulia Gorbachenko, Hannah 1"/></a>
-            </li>
-            <li class="item block cat1">
-              <a href="http://placehold.it/1600x1000" rel="prettyPhoto[portfolio]"><img
-                  src="http://placehold.it/1280x800"
-                  alt="Yulia Gorbachenko, Hair 1"/></a>
-            </li>
-            <li class="item block cat1">
-              <a href="http://placehold.it/1600x1000" rel="prettyPhoto[portfolio]"><img
-                  src="http://placehold.it/1280x800"
-                  alt="Yulia Gorbachenko, Hair 2"/></a>
-            </li>
-            <li class="item block cat3">
-              <a href="http://placehold.it/1600x1000" rel="prettyPhoto[portfolio]"><img
-                  src="http://placehold.it/1280x800"
-                  alt="Yulia Gorbachenko, Traction 1"/></a>
-            </li>
-            <li class="item block cat1 cat3">
-              <a href="http://placehold.it/1600x1000" rel="prettyPhoto[portfolio]"><img
-                  src="http://placehold.it/1280x800"
-                  alt="Yulia Gorbachenko, Traction 1"/></a>
-            </li>
-            <li class="item block hiphop">
-              <a href="http://placehold.it/1600x1000" rel="prettyPhoto[portfolio]"><img
-                  src="http://placehold.it/1280x800"
-                  alt="Yulia Gorbachenko, Beauty 2"/></a>
-            </li>
-            <li class="item block cat4">
-              <a href="http://placehold.it/1600x1000" rel="prettyPhoto[portfolio]"><img
-                  src="http://placehold.it/1280x800"
-                  alt="Yulia Gorbachenko, Wavelength 1"/></a>
-            </li>
-            <li class="item block cat4">
-              <a href="http://placehold.it/1600x1000" rel="prettyPhoto[portfolio]"><img
-                  src="http://placehold.it/1280x800"
-                  alt="Yulia Gorbachenko, On Fire 1"/></a>
-            </li>
-            <li class="item block cat1">
-              <a href="http://placehold.it/1600x1000" rel="prettyPhoto[portfolio]"><img
-                  src="http://placehold.it/1280x800"
-                  alt="Yulia Gorbachenko, On Fire 2"/></a>
-            </li>
-            <li class="item block cat1">
-              <a href="http://placehold.it/1600x1000" rel="prettyPhoto[portfolio]"><img
-                  src="http://placehold.it/1280x800"
-                  alt="Yulia Gorbachenko, Hair 3"/></a>
-            </li>
-            <li class="item block cat3">
-              <a href="http://placehold.it/1600x1000" rel="prettyPhoto[portfolio]"><img
-                  src="http://placehold.it/1280x800"
-                  alt="Yulia Gorbachenko, On Fire 3"/></a>
-            </li>
-            <li class="item block cat3">
-              <a href="http://placehold.it/1600x1000" rel="prettyPhoto[portfolio]"><img
-                  src="http://placehold.it/1280x800"
-                  alt="Yulia Gorbachenko, Wavelength 2"/></a>
-            </li>
-          </ul>
+          <div class="row">
+            {% for picture in pictures %}
+              <div class="col-md-4">
+                <a href="{{ picture.img.url }}" rel="prettyPhoto[portfolio]">
+                  <div class="gallery-img" style="background-image: url('{{ picture.img.url }}')"></div>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
         </div><!--Close Top Match-->
         <div class="col-md-3 right-column">
-          <div class="top-score-title col-md-12 right-title">
-            <h3>Latest News</h3>
-            <div class="right-content">
-              <p class="news-title-right">A New Old Life</p>
-              <p class="txt-right">Simon, who’s seeded just a lowly 26th here, was in many ways the right man for this
-                grueling assignment</p>
-              <a href="single_news.html" class="ca-more"><i class="fa fa-angle-double-right"></i>more...</a>
-            </div>
-            <div class="right-content">
-              <p class="news-title-right">A New Old Life</p>
-              <p class="txt-right">Simon, who’s seeded just a lowly 26th here, was in many ways the right man for this
-                grueling assignment</p>
-              <a href="single_news.html" class="ca-more"><i class="fa fa-angle-double-right"></i>more...</a>
-            </div>
-            <div class="right-content">
-              <p class="news-title-right">A New Old Life</p>
-              <p class="txt-right">Simon, who’s seeded just a lowly 26th here, was in many ways the right man for this
-                grueling assignment</p>
-              <a href="single_news.html" class="ca-more"><i class="fa fa-angle-double-right"></i>more...</a>
-            </div>
-          </div>
+
+          {% include 'latest_news.html' %}
+
           <div class="top-score-title col-md-12">
             <img src="http://placehold.it/1000x475" alt=""/>
           </div>
@@ -302,7 +218,7 @@
 
     $(window).load(function () {
       "use strict";
-      var $container = $('.albumContainer');
+      var $container = $('.pictureContainer');
       $container.isotope({
         filter: '*',
         animationOptions: {
@@ -312,8 +228,8 @@
         }
       });
 
-      $('.albumFilter li').on('click', function (e) {
-        $('.albumFilter .current').removeClass('current');
+      $('.pictureFilter li').on('click', function (e) {
+        $('.pictureFilter .current').removeClass('current');
         $(this).addClass('current');
 
         var selector = $(this).attr('data-filter');

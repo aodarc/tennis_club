@@ -4454,3 +4454,14 @@ ul.last-tips li a:hover {
     background: rgba(255,255,255,0);
     padding: 0;
 }
+.gallery-img{
+	width: 100%;
+	height: 200px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	transition: all 0.5s;
+}
+.gallery-img:hover{
+	background-size: 135%;
+	background-position: top;
+}
