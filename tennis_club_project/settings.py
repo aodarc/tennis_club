@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     # 'multiupload',
     'news',
     'gallery',
+    'members',
+
 ]
 
 MIDDLEWARE = [

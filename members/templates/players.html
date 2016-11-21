@@ -22,46 +22,16 @@
           <p class="txt-right txt-dd-second">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
             quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          <div class="col-md-3 atp-player">
-            <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-              <p>Nicol Radek</p></a>
-          </div>
-          <div class="col-md-3 atp-player">
-            <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-              <p>Rafael Bovi</p></a>
-          </div>
-          <div class="col-md-3 atp-player">
-            <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-              <p>Roger Kirt</p></a>
-          </div>
-          <div class="col-md-3 atp-player">
-            <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-              <p>Stan Wark</p></a>
-          </div>
-          <div class="col-md-3 atp-player">
-            <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-              <p>David Glove</p></a>
-          </div>
-          <div class="col-md-3 atp-player">
-            <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-              <p>Milos Rotin</p></a>
-          </div>
-          <div class="col-md-3 atp-player">
-            <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-              <p>Gregor Goe </p></a>
-          </div>
-          <div class="col-md-3 atp-player">
-            <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-              <p>Tomas Berin</p></a>
-          </div>
-          <div class="col-md-3 atp-player">
-            <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-              <p>Andy Morra</p></a>
-          </div>
-          <div class="col-md-3 atp-player">
-            <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-              <p>Jo-Wilf T. </p></a>
-          </div>
+
+          {% for player in men %}
+            <div class="col-md-3 atp-player">
+              <a href="{% url 'player' player.pk %}">
+                <div class="gallery-img player-ava" style="background-image: url('{{ player.avatar.url }}')"></div>
+                <p>{{ player.get_full_name }}</p>
+              </a>
+            </div>
+          {% endfor %}
+
           <div class="content-wtp-player">
             <h3>Жінки </h3>
             <p class="txt-right">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
@@ -70,46 +40,16 @@
             <p class="txt-right txt-dd-second">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
               tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
               quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <div class="col-md-3 atp-player">
-              <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-                <p>Serena Peter</p></a>
-            </div>
-            <div class="col-md-3 atp-player">
-              <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-                <p>Simon Egger</p></a>
-            </div>
-            <div class="col-md-3 atp-player">
-              <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-                <p>Naki Li</p></a>
-            </div>
-            <div class="col-md-3 atp-player">
-              <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-                <p>Petra Dorav</p></a>
-            </div>
-            <div class="col-md-3 atp-player">
-              <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-                <p>Aga Rader</p></a>
-            </div>
-            <div class="col-md-3 atp-player">
-              <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-                <p>Maria Collan</p></a>
-            </div>
-            <div class="col-md-3 atp-player">
-              <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-                <p>A. Kerber</p></a>
-            </div>
-            <div class="col-md-3 atp-player">
-              <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-                <p>Erika Bou </p></a>
-            </div>
-            <div class="col-md-3 atp-player">
-              <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-                <p>Ana Ivan </p></a>
-            </div>
-            <div class="col-md-3 atp-player">
-              <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-                <p>Carla Work</p></a>
-            </div>
+
+            {% for player in women %}
+              <div class="col-md-3 atp-player">
+                <a href="{% url 'player' player.pk %}">
+                  <div class="gallery-img player-ava" style="background-image: url('{{ player.avatar.url }}')"></div>
+                  <p>{{ player.get_full_name }}</p>
+                </a>
+              </div>
+            {% endfor %}
+
           </div>
           <div class="content-wtp-player">
             <h3>Діти </h3>
@@ -119,70 +59,20 @@
             <p class="txt-right txt-dd-second">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
               tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
               quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <div class="col-md-3 atp-player">
-              <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-                <p>Serena Peter</p></a>
-            </div>
-            <div class="col-md-3 atp-player">
-              <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-                <p>Simon Egger</p></a>
-            </div>
-            <div class="col-md-3 atp-player">
-              <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-                <p>Naki Li</p></a>
-            </div>
-            <div class="col-md-3 atp-player">
-              <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-                <p>Petra Dorav</p></a>
-            </div>
-            <div class="col-md-3 atp-player">
-              <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-                <p>Aga Rader</p></a>
-            </div>
-            <div class="col-md-3 atp-player">
-              <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-                <p>Maria Collan</p></a>
-            </div>
-            <div class="col-md-3 atp-player">
-              <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-                <p>A. Kerber</p></a>
-            </div>
-            <div class="col-md-3 atp-player">
-              <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-                <p>Erika Bou </p></a>
-            </div>
-            <div class="col-md-3 atp-player">
-              <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-                <p>Ana Ivan </p></a>
-            </div>
-            <div class="col-md-3 atp-player">
-              <a href="single_player.html"><img src="{% static 'images/player/face.jpg' %}" alt=""/>
-                <p>Carla Work</p></a>
-            </div>
+
+            {% for player in children %}
+              <div class="col-md-3 atp-player">
+                <a href="{% url 'player' player.pk %}">
+                <div class="gallery-img player-ava" style="background-image: url('{{ player.avatar.url }}')"></div>
+                <p>{{ player.get_full_name }}</p>
+              </a>
+              </div>
+            {% endfor %}
+
           </div>
         </div><!--Close Top Match-->
         <div class="col-md-3 right-column">
-          <div class="top-score-title col-md-12 right-title">
-            <h3>Latest News</h3>
-            <div class="right-content">
-              <p class="news-title-right">A New Old Life</p>
-              <p class="txt-right">Simon, who’s seeded just a lowly 26th here, was in many ways the right man for this
-                grueling assignment</p>
-              <a href="single_news.html" class="ca-more"><i class="fa fa-angle-double-right"></i>more...</a>
-            </div>
-            <div class="right-content">
-              <p class="news-title-right">A New Old Life</p>
-              <p class="txt-right">Simon, who’s seeded just a lowly 26th here, was in many ways the right man for this
-                grueling assignment</p>
-              <a href="single_news.html" class="ca-more"><i class="fa fa-angle-double-right"></i>more...</a>
-            </div>
-            <div class="right-content">
-              <p class="news-title-right">A New Old Life</p>
-              <p class="txt-right">Simon, who’s seeded just a lowly 26th here, was in many ways the right man for this
-                grueling assignment</p>
-              <a href="single_news.html" class="ca-more"><i class="fa fa-angle-double-right"></i>more...</a>
-            </div>
-          </div>
+          {% include 'latest_news.html' %}
           <div class="top-score-title col-md-12">
             <img src="http://placehold.it/1000x475" alt=""/>
           </div>

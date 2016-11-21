@@ -24,8 +24,8 @@ urlpatterns = [
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='main'),
     url(r'^contacts$', TemplateView.as_view(template_name='contacts.html'), name='contacts'),
-    url(r'^players$', TemplateView.as_view(template_name='players.html'), name='players'),
     url(r'^news/', include('news.urls'), name='news'),
+    url(r'^members/', include('members.urls'), name='members'),
     url(r'^gallery/', include('gallery.urls')),
 
 ]
