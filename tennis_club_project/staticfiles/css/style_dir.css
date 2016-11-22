@@ -5180,6 +5180,10 @@ ul.last-tips li a:hover {
 
 
 /*CUSTOM*/
+.pt-15{
+    padding-top: 15px;
+}
+
 .gallery-img {
     width: 100%;
     height: 200px;

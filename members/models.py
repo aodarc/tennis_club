@@ -3,6 +3,7 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
+from django.db.models import Q
 
 SEX = (
     ('m', 'Чоловіча'),
@@ -11,7 +12,30 @@ SEX = (
 )
 
 
+class MemberManager(models.Manager):
+    @property
+    def children_filter(self):
+        now = date.today()
+        f = Q(birthday__year__gt=now.year - 18) | Q(birthday__year=now.year - 18,
+                                                    birthday__month__gt=now.month, ) | Q(
+            birthday__year=now.year - 18,
+            birthday__month=now.month,
+            birthday__day__gt=now.day)
+        return f
+
+    def get_children(self):
+        return super(MemberManager, self).get_queryset().filter(self.children_filter)
+
+    def get_women(self):
+        return super(MemberManager, self).get_queryset().filter(Q(sex='f')).exclude(self.children_filter)
+
+    def get_men(self):
+        return super(MemberManager, self).get_queryset().filter(Q(sex='m')).exclude(self.children_filter)
+
+
 class Member(models.Model):
+    objects = MemberManager()
+
     avatar = models.ImageField(blank=False, verbose_name='Аватарка', upload_to='members/avatars/')
     first_name = models.CharField(max_length=20, blank=False, verbose_name="Ім'я")
     last_name = models.CharField(max_length=30, blank=False, verbose_name='Прізвище')
@@ -36,7 +60,7 @@ class Member(models.Model):
 
     @property
     def is_child(self):
-        return not (date.today() - self.birthday).days/365 < 18
+        return not (date.today() - self.birthday).days / 365 < 18
 
     @property
     def get_rank_position(self):

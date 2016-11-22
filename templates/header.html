@@ -36,7 +36,7 @@
                       <li><a href="login.html"><span>Регламент</span></a></li>
                       <li><a href="news.html"><span>Тренери</span></a></li>
                       <li><a href="single_news.html"><span>Керівництво клубу</span></a></li>
-                      <li><a href="video_tube.html"><span>Video (youtube)</span></a></li>
+                      <li><a href="{% url 'videos' %}"><span>Video (youtube)</span></a></li>
                       <li><a href="video.html"><span>Video (html5)</span></a></li>
                       <li><a href="results.html"><span>Results</span></a></li>
                       <li><a href="players.html"><span>Учасники</span></a></li>
@@ -55,7 +55,7 @@
             <li><a class="lnk-menu" href="{% url 'players' %}">Учасники</a></li>
             <li><a class="lnk-menu" href="tournaments.html"><span>Турніри</span></a></li>
 
-            <li><a class="lnk-menu" href="results.html">Рейтинги</a></li>
+            <li><a class="lnk-menu" href="{% url 'rating' %}">Рейтинги</a></li>
             <li><a class="lnk-menu" href="{% url 'gallery' %}">Галерея</a></li>
             <li><a class="lnk-menu" href="{% url 'contacts' %}">Контакти</a></li>
           </ul>

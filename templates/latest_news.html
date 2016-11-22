@@ -2,7 +2,7 @@
   <h3>Latest News</h3>
   {% for news in latest_news %}
     <div class="right-content">
-      <p class="news-title-right">{{ news.title|slice:":15" }}</p>
+      <p class="news-title-right">{{ news.title|slice:":30" }}</p>
       <p class="txt-right">{{ news.content|striptags|slice:":120" }}...</p>
       <a href="{{ news.get_absolute_url }}" class="ca-more"><i class="fa fa-angle-double-right"></i>Більше...</a>
     </div>

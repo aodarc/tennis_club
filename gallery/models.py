@@ -1,5 +1,6 @@
 import uuid
 
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 
 
@@ -39,3 +40,26 @@ class Picture(models.Model):
 
     def __str__(self):
         return 'Альбом: {} ||| {}'.format(self.album.name, self.alt or self.pk)
+
+
+class Video(models.Model):
+    url = models.URLField(verbose_name='Посилання на відео',
+                          blank=False,
+                          help_text='Наприклад https://www.youtube.com/watch?v=lMinfVMfH9k')
+    title = models.CharField(max_length=255, verbose_name='Заголовок', blank=False)
+    description = RichTextUploadingField(verbose_name='Опис', blank=True)
+    created = models.DateField(auto_now_add=True, verbose_name='Додано')
+
+    @property
+    def video_id(self):
+        return self.url[self.url.find('v=') + 2:]
+
+    def get_video_frame(self):
+        return '<iframe class="embed-responsive-item" width="100%" height="500px" src="https://www.youtube.com/embed/{}" frameborder="0" allowfullscreen="true"></iframe>'.format(
+            self.video_id)
+
+    def get_thumbnail_video(self):
+        return 'https://img.youtube.com/vi/{}/0.jpg'.format(self.video_id)
+
+    def __str__(self):
+        return self.title
