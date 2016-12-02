@@ -37,16 +37,16 @@
                     <tr class="top-scrore-table">
                       <td class="score-position">POS.</td>
                       <td>PLAYER</td>
-{#                      <td>NAT.</td>#}
+                      {#                      <td>NAT.</td>#}
                       <td>POINTS</td>
                     </tr>
                     {% for man in men %}
-                    <tr>
-                      <td class="score-position">{{ forloop.counter }}.</td>
-                      <td><a href="single_player.html">{{ man.get_full_name }} </a></td>
-{#                      <td><img src="images/flags/serbia.png" alt=""/></td>#}
-                      <td>{{ man.rating }}</td>
-                    </tr>
+                      <tr>
+                        <td class="score-position">{{ forloop.counter }}.</td>
+                        <td><a href="single_player.html">{{ man.get_full_name }} </a></td>
+                        {#                      <td><img src="images/flags/serbia.png" alt=""/></td>#}
+                        <td>{{ man.rating }}</td>
+                      </tr>
                     {% endfor %}
                   </table>
                 </div>
@@ -55,16 +55,16 @@
                     <tr class="top-scrore-table">
                       <td class="score-position">POS.</td>
                       <td>PLAYER</td>
-{#                      <td>NAT.</td>#}
+                      {#                      <td>NAT.</td>#}
                       <td>POINTS</td>
                     </tr>
                     {% for woman in women %}
-                    <tr>
-                      <td class="score-position">{{ forloop.counter }}.</td>
-                      <td><a href="single_player.html">{{ woman.get_full_name }} </a></td>
-{#                      <td><img src="images/flags/serbia.png" alt=""/></td>#}
-                      <td>{{ woman.rating }}</td>
-                    </tr>
+                      <tr>
+                        <td class="score-position">{{ forloop.counter }}.</td>
+                        <td><a href="single_player.html">{{ woman.get_full_name }} </a></td>
+                        {#                      <td><img src="images/flags/serbia.png" alt=""/></td>#}
+                        <td>{{ woman.rating }}</td>
+                      </tr>
                     {% endfor %}
                   </table>
                 </div>
@@ -73,16 +73,16 @@
                     <tr class="top-scrore-table">
                       <td class="score-position">POS.</td>
                       <td>PLAYER</td>
-{#                      <td>NAT.</td>#}
+                      {#                      <td>NAT.</td>#}
                       <td>POINTS</td>
                     </tr>
                     {% for child in children %}
-                    <tr>
-                      <td class="score-position">{{ forloop.counter }}.</td>
-                      <td><a href="single_player.html">{{ child.get_full_name }} </a></td>
-{#                      <td><img src="images/flags/serbia.png" alt=""/></td>#}
-                      <td>{{ child.rating }}</td>
-                    </tr>
+                      <tr>
+                        <td class="score-position">{{ forloop.counter }}.</td>
+                        <td><a href="single_player.html">{{ child.get_full_name }} </a></td>
+                        {#                      <td><img src="images/flags/serbia.png" alt=""/></td>#}
+                        <td>{{ child.rating }}</td>
+                      </tr>
                     {% endfor %}
                   </table>
                 </div>
