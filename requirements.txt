@@ -1,4 +1,3 @@
-admin-multiupload==0.1
 awesome-slugify==1.6.5
 BareNecessities==0.2.8
 CommandTool==0.5.3
